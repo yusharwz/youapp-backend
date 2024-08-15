@@ -274,9 +274,14 @@ Authorization: Bearer {token}
 - **Response**:
   ```json
   [
-    "username_1",
-    "username_2",
-    ...
+    {
+      "userId": "exampleFirstUserId",
+      "username": "exampleFirstUsername"
+    },
+    {
+      "userId": "exampleSecondUserId",
+      "username": "exampleSecondUsername"
+    }
   ]
   ```
 
