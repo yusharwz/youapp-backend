@@ -41,16 +41,19 @@ export class MessageService {
 
     const users = await this.userModel
       .find({ _id: { $in: connectedUserIds } })
-      .select("username")
+      .select("username _id")
       .exec();
 
     if (users.length === 0) {
       return [];
     }
 
-    const usernames = users.map((user) => user.username);
+    const userDetails = users.map((user) => ({
+      userId: user._id,
+      username: user.username,
+    }));
 
-    return usernames;
+    return userDetails;
   }
 
   async getAllChatRooms(userId: string): Promise<string[]> {
