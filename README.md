@@ -108,7 +108,7 @@ Authorization: Bearer {token}
     "_id": "exampleUserId",
     "email": "example@example.com",
     "username": "exampleUser",
-    "password": "$2b$10$rmpAbj3sfzC6LRla0JgL/uC6lpkYAG2Yse3kHjFm6z/.A0q3tjT16",
+    "password": "hashedPassword",
     "displayName": "exampleUser",
     "gender": "male",
     "birthDate": "2000-01-01",
@@ -160,8 +160,6 @@ Authorization: Bearer {token}
     "displayName": "exampleUser",
     "gender": "male",
     "birthDate": "2000-01-01",
-    "horoscope": "♉ horoscope",
-    "zodiac": "zodiac",
     "height": 170,
     "weight": 70,
     "interests": ["Reading", "Gaming"]
@@ -276,8 +274,8 @@ Authorization: Bearer {token}
 - **Response**:
   ```json
   [
-    "userId_1",
-    "userId_2",
+    "username_1",
+    "username_2",
     ...
   ]
   ```
