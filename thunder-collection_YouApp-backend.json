@@ -1,0 +1,212 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "YouApp-backend",
+    "collectionId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+    "dateExported": "2024-08-15T00:34:34.741Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c1093590-40e0-402e-bd97-b69f72787886",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Register",
+            "url": "http://localhost:3000/api/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-08-11T08:29:55.070Z",
+            "modified": "2024-08-14T22:57:18.004Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"yusharwz@gmail.com\",\n  \"username\": \"yusharwzz\",\n  \"password\": \"Sudiang123!\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl1c2hhcnd6Iiwic3ViIjoiNjZiYTRiNTdhMGY3N2VjNzdlMGJmZTM4IiwiaWF0IjoxNzIzNDkwNjI5LCJleHAiOjE3MjM0OTQyMjl9.8d5lYSOvnhrWGreDmav_XMtfQUxHkv3bBDLdwnw8U8E",
+                "bearerPrefix": "BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl1c2hhcnd6Iiwic3ViIjoiNjZiODc3MDkxM2E2MDZmMDRhYjE3YmIzIiwiaWF0IjoxNzIzNDg3NDA0LCJleHAiOjE3MjM0OTEwMDR9.ktCcb4L4zgF_YMVNZKYkiK7IZ5NqE0NhcZW8touk80E"
+            }
+        },
+        {
+            "_id": "04ea6076-e4e0-4b80-a15f-d124c957e909",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Login",
+            "url": "http://localhost:3000/api/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-08-12T19:47:31.496Z",
+            "modified": "2024-08-15T00:25:23.244Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"yusharw@gmail.com\",\n  \"password\": \"Sudiang123!\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl1c2hhcnd6Iiwic3ViIjoiNjZiYTRiNTdhMGY3N2VjNzdlMGJmZTM4IiwiaWF0IjoxNzIzNDkwNjI5LCJleHAiOjE3MjM0OTQyMjl9.8d5lYSOvnhrWGreDmav_XMtfQUxHkv3bBDLdwnw8U8E",
+                "bearerPrefix": "BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl1c2hhcnd6Iiwic3ViIjoiNjZiODc3MDkxM2E2MDZmMDRhYjE3YmIzIiwiaWF0IjoxNzIzNDg3NDA0LCJleHAiOjE3MjM0OTEwMDR9.ktCcb4L4zgF_YMVNZKYkiK7IZ5NqE0NhcZW8touk80E"
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.data.token",
+                    "action": "setto",
+                    "value": "{{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "31a43a8b-7908-4f05-a10b-f30f825173b8",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Get Profile",
+            "url": "http://localhost:3000/api/getProfile",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-08-12T19:52:03.953Z",
+            "modified": "2024-08-14T18:53:56.168Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer {{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "5db9c736-1461-4dcf-b532-43d692cbad66",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Update User",
+            "url": "http://localhost:3000/api/updateUser",
+            "method": "PUT",
+            "sortNum": 32500,
+            "created": "2024-08-14T18:59:58.999Z",
+            "modified": "2024-08-14T19:22:23.643Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer {{token}}"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"\",\n  \"username\": \"\",\n  \"password\": \"\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "dbe26f20-417b-427a-bd0f-b47681200f63",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Create Profile",
+            "url": "http://localhost:3000/api/createProfile",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2024-08-13T11:58:55.816Z",
+            "modified": "2024-08-14T23:22:51.793Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer {{token}}"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"displayName\": \"Yushar 2\",\n  \"gender\": \"male\",\n  \"birthDate\": \"2001-01-01\",\n  \"height\": \"170\",\n  \"weight\": \"50\",\n  \"interests\": [\n    \"Reading\",\n    \"Hiking\"\n  ]\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "23932cfa-ff38-41d5-8d63-d172ad87b27c",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Update Profile",
+            "url": "http://localhost:3000/api/updateProfile",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-08-13T11:52:21.686Z",
+            "modified": "2024-08-14T19:28:28.743Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer {{token}}"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"displayName\": \"yusharw@gmail.com\",\n  \"gender\": \"female\",\n  \"birthDate\": \"2001-04-26\",\n  \"height\": \"\",\n  \"weight\": \"45\",\n  \"interests\": [\n    \"123\",\n    \"456\"\n    ]\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "37b3efbe-fbf9-4133-ad63-5cac93bdf810",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Delete User",
+            "url": "http://localhost:3000/api/deleteProfile",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-08-13T18:12:03.191Z",
+            "modified": "2024-08-13T18:16:22.916Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer {{token}}"
+                }
+            ]
+        },
+        {
+            "_id": "8546b966-b5aa-4a91-8f5b-99d5f0690593",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Send Message",
+            "url": "http://localhost:3000/api/sendMessage",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-08-14T22:29:07.449Z",
+            "modified": "2024-08-15T00:25:03.113Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"receiverId\": \"66bcf0b8d31561c4444feeed\",\n  \"content\": \"tes\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "7a656cc0-3b33-4383-a7d7-18716aadf5cd",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Get Message",
+            "url": "http://localhost:3000/api/viewMessage/66bcfd8c82a9e25dfcff16d6",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-08-14T22:34:42.783Z",
+            "modified": "2024-08-15T00:13:24.204Z",
+            "headers": []
+        },
+        {
+            "_id": "3bba0ba2-ddb3-4456-9eaf-86b7ef16b4b8",
+            "colId": "a98eb188-3f16-4efb-b891-5d9e204b127e",
+            "containerId": "",
+            "name": "Get All Chat Room",
+            "url": "http://localhost:3000/api/viewAllMessages",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-08-14T23:07:42.115Z",
+            "modified": "2024-08-14T23:13:53.231Z",
+            "headers": []
+        }
+    ],
+    "settings": {
+        "headers": [
+            {
+                "name": "Authorization",
+                "value": "Bearer {{token}}"
+            }
+        ]
+    },
+    "ref": "33yUs-hM-A6xXgAcXV1Vf5bk3eUtbGTJ0V9cxFuzxAq6u4z1FCxcHSNhRf_GEmH8U7zMSF8z1ufNhzKU1K6yNQ"
+}
