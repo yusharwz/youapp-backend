@@ -35,6 +35,11 @@ export class MessageService {
   }
 
   async getMessages(userId: string, receiverId: string): Promise<Message[]> {
+    if (userId === receiverId) {
+      throw new BadRequestException(
+        "Cannot retrieve messages between yourself"
+      );
+    }
     return this.messageModel
       .find({
         $or: [
