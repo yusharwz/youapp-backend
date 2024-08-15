@@ -7,7 +7,7 @@ This documentation provides an overview of the API endpoints for the YouApp Back
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-repository/youapp-backend.git
+git clone https://github.com/yusharwz/youapp-backend.git
 cd youapp-backend
 ```
 
