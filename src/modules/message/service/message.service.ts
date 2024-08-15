@@ -1,22 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Message } from '../model/message.schema';
-import { User } from '../../user/model/user.schema';
-import { Profile } from '../../profile/model/profile.schema';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { Message } from "../model/message.schema";
+import { User } from "../../user/model/user.schema";
 
 @Injectable()
 export class MessageService {
   constructor(
-    @InjectModel('Message') private messageModel: Model<Message>,
-    @InjectModel(User.name) private userModel: Model<User>,
-    @InjectModel(Profile.name) private profileModel: Model<Profile>,
+    @InjectModel("Message") private messageModel: Model<Message>,
+    @InjectModel(User.name) private userModel: Model<User>
   ) {}
 
   async sendMessage(
     senderId: string,
     receiverId: string,
-    content: string,
+    content: string
   ): Promise<Message> {
     const message = new this.messageModel({
       senderId,
@@ -38,41 +36,32 @@ export class MessageService {
       .exec();
   }
 
-  async getAllConnectedUserDisplayNames(userId: string): Promise<any[]> {
+  async getAllConnectedUserUsernames(userId: string): Promise<any[]> {
     const connectedUserIds = await this.getAllChatRooms(userId);
 
-    const profiles = await this.userModel
+    const users = await this.userModel
       .find({ _id: { $in: connectedUserIds } })
-      .select('profileId')
+      .select("username")
       .exec();
 
-    if (profiles.length === 0) {
+    if (users.length === 0) {
       return [];
     }
 
-    const profileIds = profiles.map((profile) => profile.profileId);
+    const usernames = users.map((user) => user.username);
 
-    if (profileIds.length === 0) {
-      return [];
-    }
-
-    const displayNames = await this.profileModel
-      .find({ _id: { $in: profileIds } })
-      .select('displayName')
-      .exec();
-
-    return displayNames;
+    return usernames;
   }
 
   async getAllChatRooms(userId: string): Promise<string[]> {
     const senderIds = await this.messageModel
       .find({ senderId: userId })
-      .distinct('receiverId')
+      .distinct("receiverId")
       .exec();
 
     const receiverIds = await this.messageModel
       .find({ receiverId: userId })
-      .distinct('senderId')
+      .distinct("senderId")
       .exec();
 
     const allChatRoomIds = [...new Set([...senderIds, ...receiverIds])];
