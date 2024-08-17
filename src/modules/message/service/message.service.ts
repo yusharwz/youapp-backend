@@ -16,7 +16,12 @@ export class MessageService {
     receiverId: string,
     content: string
   ): Promise<Message> {
-    if (!receiverId) {
+    if (
+      !receiverId ||
+      receiverId === "" ||
+      receiverId === null ||
+      receiverId === "null"
+    ) {
       throw new BadRequestException("Receiver ID is undefined");
     }
     if (receiverId === senderId) {
@@ -34,13 +39,14 @@ export class MessageService {
     }).save();
   }
 
-  async getMessages(userId: string, receiverId: string): Promise<Message[]> {
+  async getMessages(userId: string, receiverId: string): Promise<any[]> {
     if (userId === receiverId) {
       throw new BadRequestException(
         "Cannot retrieve messages between yourself"
       );
     }
-    return this.messageModel
+
+    const messages = await this.messageModel
       .find({
         $or: [
           { senderId: userId, receiverId: receiverId },
@@ -48,6 +54,34 @@ export class MessageService {
         ],
       })
       .exec();
+
+    const userIds = messages.reduce((acc, message) => {
+      acc.add(message.senderId.toString());
+      acc.add(message.receiverId.toString());
+      return acc;
+    }, new Set<string>());
+
+    const users = await this.userModel
+      .find({ _id: { $in: Array.from(userIds) } })
+      .select("username")
+      .exec();
+
+    const userMap: Record<string, string> = {};
+    users.forEach((user) => {
+      userMap[user._id.toString()] = user.username;
+    });
+
+    const formattedMessages = messages.map((message) => ({
+      _id: message._id,
+      senderId: message.senderId,
+      senderUsername: userMap[message.senderId.toString()],
+      receiverId: message.receiverId,
+      receiverUsername: userMap[message.receiverId.toString()],
+      content: message.content,
+      timestamp: message.timestamp,
+    }));
+
+    return formattedMessages;
   }
 
   async getAllConnectedUserUsernames(userId: string): Promise<any[]> {
