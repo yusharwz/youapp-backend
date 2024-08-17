@@ -248,15 +248,25 @@ Authorization: Bearer {token}
 ```
 
 - **Response**:
+
   ```json
   [
     {
       "senderId": "senderId_here",
+      "senderUsername": "exampleSenderUsername",
       "receiverId": "receiverId_here",
+      "receiverUsername": "exampleReceiverUsername",
       "content": "Hello there!",
       "timestamp": "2024-08-15T00:13:24.204Z"
     },
-    ...
+    {
+      "senderId": "senderId2_here",
+      "senderUsername": "exampleSenderUsername2",
+      "receiverId": "receiverId_here2",
+      "receiverUsername": "exampleReceiverUsername2",
+      "content": "Hello there!",
+      "timestamp": "2024-08-15T00:13:24.204Z"
+    }
   ]
   ```
 
